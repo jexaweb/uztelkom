@@ -77,11 +77,15 @@ export function GlobalSearch() {
           placeholder="Telefon raqami, passport, diler, login, kompaniya yoki ID bo'yicha qidiring..."
           className="w-full rounded-lg border border-slate-300 bg-white py-2 pr-3 pl-9 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 focus:outline-none"
         />
-        {loading && (
-          <span className="absolute top-1/2 right-3 -translate-y-1/2">
-            <span className="block h-4 w-4 animate-spin rounded-full border-2 border-slate-300 border-t-transparent" />
-          </span>
-        )}
+       {loading && (
+  <div className="absolute top-1/2 right-3 flex -translate-y-1/2 items-center gap-2">
+    <span className="text-xs font-medium text-slate-400">
+      Qidirilmoqda...
+    </span>
+
+    <span className="block h-4 w-4 animate-spin rounded-full border-2 border-blue-100 border-t-blue-600" />
+  </div>
+)}
       </div>
 
       {open && (

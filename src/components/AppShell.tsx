@@ -101,25 +101,38 @@ export function AppShell({ children }: { children: ReactNode }) {
     };
   }, [pathname, router]);
 
+setTimeout(() => {
+  setCheckingAuth(false);
+}, 5000);
   // LOGIN sahifasida sidebar/header umuman chiqmaydi
   if (pathname === "/login") {
     return <>{children}</>;
   }
 
   // Authentication tekshirilayotgan paytda dashboardni ko'rsatmaymiz
-  if (checkingAuth) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-slate-950">
-        <div className="text-center">
-          <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-slate-700 border-t-blue-500" />
-
-          <p className="mt-4 text-sm text-slate-400">
-            Tizim tekshirilmoqda...
-          </p>
+if (checkingAuth) {
+  return (
+    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-slate-100">
+      <div className="flex flex-col items-center">
+        <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-blue-600 shadow-xl shadow-blue-500/30">
+          <span className="text-2xl font-black text-white">
+            UZ
+          </span>
         </div>
+
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600" />
+
+        <p className="mt-5 text-sm font-semibold text-slate-700">
+          Yuklanmoqda...
+        </p>
+
+        <p className="mt-1 text-xs text-slate-400">
+          UZTELECOM Dealer Control
+        </p>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen">
@@ -184,7 +197,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
             <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-emerald-600">
               <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              Faol · v1.0
+              Faol .KY_dew
             </p>
           </div>
         </div>
