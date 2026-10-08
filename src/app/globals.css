@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+html {
+  color-scheme: light;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes uz-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes uz-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade-in {
+  animation: uz-fade-in 0.2s ease-out both;
+}
+.animate-slide-up {
+  animation: uz-slide-up 0.25s ease-out both;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.monthly-sales table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums; /* raqamlar bir tekis chiqadi */
+}
+
+/* ---------- Faqat 5-ustun qotadi ---------- */
+.monthly-sales :is(thead th, tbody td):nth-child(5) {
+  position: sticky;
+  left: 0;
+  box-sizing: border-box;
+  width: var(--c5);
+  min-width: var(--c5);
+  max-width: var(--c5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  border-right: 1px solid var(--line);
+  box-shadow: 2px 0 6px -4px var(--shadow);
+     /* qotgan qism chegarasi */
+}
+.monthly-sales tbody td:nth-child(5) { z-index: 10; font-weight: 600;  }
+.monthly-sales thead th:nth-child(5) { z-index: 30; }   /* burchak eng yuqorida */
+
+.monthly-sales table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums; /* raqamlar bir tekis chiqadi */
+  
+}
+
+/* Sarlavha: tepada qotib turadi */
+.monthly-sales thead th {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+ 
+  text-align: right;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+/* Kataklar */
+.monthly-sales tbody td {
+  background: #f8fafc;
+  text-align: right;
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9;
+  white-space: nowrap;
+}
