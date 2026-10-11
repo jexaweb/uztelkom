@@ -1238,13 +1238,13 @@ export default function DashboardPage() {
                     SMS
                   </p>
 
-                  <p className="mt-2 text-3xl font-black text-blue-900">
+                  {/* <p className="mt-2 text-3xl font-black text-blue-900">
                     {formatNumber(
                       smsRows.length
                     )}
-                  </p>
+                  </p> */}
 
-                  <p className="mt-1 text-xs text-blue-600">
+                  <p className="mt-2 text-3xl font-black text-blue-900">
                     Jami:{" "}
                     {formatNumber(
                       smsTotal
@@ -1267,13 +1267,13 @@ export default function DashboardPage() {
                     Sug&apos;urta
                   </p>
 
-                  <p className="mt-2 text-3xl font-black text-emerald-900">
+                  {/* <p className="mt-2 text-3xl font-black text-emerald-900">
                     {formatNumber(
                       insuranceRows.length
                     )}
-                  </p>
+                  </p> */}
 
-                  <p className="mt-1 text-xs text-emerald-600">
+                  <p className="mt-2 text-3xl font-black text-emerald-900">
                     Jami:{" "}
                     {formatNumber(
                       insuranceTotal

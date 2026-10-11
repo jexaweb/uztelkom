@@ -62,55 +62,154 @@ textarea {
   font-variant-numeric: tabular-nums; /* raqamlar bir tekis chiqadi */
 }
 
-/* ---------- Faqat 5-ustun qotadi ---------- */
-.monthly-sales :is(thead th, tbody td):nth-child(5) {
-  position: sticky;
-  left: 0;
-  box-sizing: border-box;
-  width: var(--c5);
-  min-width: var(--c5);
-  max-width: var(--c5);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-  border-right: 1px solid var(--line);
-  box-shadow: 2px 0 6px -4px var(--shadow);
-     /* qotgan qism chegarasi */
-}
-.monthly-sales tbody td:nth-child(5) { z-index: 10; font-weight: 600;  }
-.monthly-sales thead th:nth-child(5) { z-index: 30; }   /* burchak eng yuqorida */
+/* =========================================
+   MONTHLY SALES — RESPONSIVE TABLE
+   ========================================= */
 
+/* Jadval tashqi konteyneri */
+.monthly-sales {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: auto;
+  position: relative;
+  isolation: isolate;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* Jadval */
 .monthly-sales table {
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
+
+  /* Kunlar siqilib, yo'qolib ketmasligi uchun */
+  width: max-content;
+  min-width: 100%;
+
   font-size: 13px;
-  font-variant-numeric: tabular-nums; /* raqamlar bir tekis chiqadi */
-  
+  font-variant-numeric: tabular-nums;
 }
 
-/* Sarlavha: tepada qotib turadi */
+/* Barcha kataklar */
+.monthly-sales th,
+.monthly-sales td {
+  box-sizing: border-box;
+  padding: 10px 12px;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* Sarlavhalar yuqorida qotadi */
 .monthly-sales thead th {
   position: sticky;
   top: 0;
   z-index: 20;
+
   background: #f8fafc;
   color: #475569;
   font-weight: 600;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
- 
   text-align: right;
+
   border-bottom: 1px solid #e2e8f0;
-  white-space: nowrap;
 }
 
-/* Kataklar */
+/* Ma'lumot kataklari */
 .monthly-sales tbody td {
-  background: #f8fafc;
-  text-align: right;
+  background: #ffffff;
   color: #0f172a;
+  text-align: right;
   border-bottom: 1px solid #f1f5f9;
-  white-space: nowrap;
+}
+
+/* Faqat 5-ustun — kompaniya — qotadi */
+.monthly-sales :is(thead th, tbody td):nth-child(5) {
+  position: sticky;
+  left: 0;
+
+  box-sizing: border-box;
+  width: var(--c5, 160px);
+  min-width: var(--c5, 160px);
+  max-width: var(--c5, 160px);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+
+  border-right: 1px solid #e2e8f0;
+  box-shadow: 2px 0 6px -4px rgba(15, 23, 42, 0.3);
+}
+
+/* Qotgan kompaniya katagi ustunlar ustida ko'rinadi */
+.monthly-sales tbody td:nth-child(5) {
+  z-index: 10;
+  font-weight: 600;
+  background: #ffffff;
+}
+
+/* Sarlavha va kompaniya kesishgan burchak */
+.monthly-sales thead th:nth-child(5) {
+  z-index: 30;
+  background: #f8fafc;
+}
+
+/* Kunlik ustunlar uchun qulay minimal kenglik */
+.monthly-sales th:not(:nth-child(5)),
+.monthly-sales td:not(:nth-child(5)) {
+  min-width: 65px;
+}
+
+/* Planshet */
+@media (max-width: 1024px) {
+  .monthly-sales table {
+    font-size: 12px;
+  }
+
+  .monthly-sales th,
+  .monthly-sales td {
+    padding: 9px 10px;
+  }
+}
+
+/* Telefon */
+@media (max-width: 640px) {
+  .monthly-sales {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    max-height: 70vh;
+    overscroll-behavior: contain;
+  }
+
+  .monthly-sales table {
+    width: max-content;
+    min-width: 100%;
+    font-size: 11px;
+  }
+
+  .monthly-sales th,
+  .monthly-sales td {
+    padding: 9px 8px;
+  }
+
+  /* Kompaniya ustuni telefonda ixcham */
+  .monthly-sales :is(thead th, tbody td):nth-child(5) {
+    width: var(--c5, 130px);
+    min-width: var(--c5, 130px);
+    max-width: var(--c5, 130px);
+  }
+
+  /* Kunlar siqilib qolmasin */
+  .monthly-sales th:not(:nth-child(5)),
+  .monthly-sales td:not(:nth-child(5)) {
+    min-width: 58px;
+  }
+
+  .monthly-sales thead th {
+    font-size: 10px;
+  }
 }
